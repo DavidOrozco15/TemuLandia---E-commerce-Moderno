@@ -258,32 +258,6 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 - Proyecto: TemuLandia
 - Año: 2025
 
-## 🙏 Agradecimientos
-
-- **Fake Store API** - Por los datos de productos
-- **Unsplash** - Por las imágenes de alta calidad
-- **Font Awesome** - Por los iconos
-- **Swiper.js** - Por el excelente carrusel
-- **AOS** - Por las animaciones al scroll
-
----
-
-## 🚀 Próximas Mejoras
-
-Ideas para futuras versiones:
-
-- [ ] Backend real con Node.js/Express
-- [ ] Base de datos (MongoDB/PostgreSQL)
-- [ ] Pagos reales (Stripe/PayPal)
-- [ ] Panel de administración
-- [ ] Sistema de reviews y ratings
-- [ ] Wishlist (lista de deseos)
-- [ ] Comparador de productos
-- [ ] Chat de soporte en vivo
-- [ ] Multi-idioma
-- [ ] PWA (Progressive Web App)
-
----
 
 **¡Gracias por usar TemuLandia! 🎉**
 
