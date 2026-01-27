@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TemuLandia - Tu Tienda Online de Confianza</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <div class="header-logo">
+                <a href="#inicio">
+                    <h1 class="logo-text">TemuLandia</h1>
+                    <span class="logo-subtitle">Shop Smart</span>
+                </a>
+            </div>
+            
+            <nav class="header-nav" id="header-nav">
+                <button class="nav-close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#categorias" class="nav-link">Categorías</a></li>
+                    <li><a href="#productos" class="nav-link">Productos</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="header-btn search-btn" id="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <button class="header-btn auth-btn" id="auth-btn">
+                    <i class="fas fa-user"></i>
+                    <span id="auth-text">Ingresar</span>
+                </button>
+                
+                <button class="header-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+                
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="search-bar">
+            <div class="container">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Buscar productos...">
+                    <button class="search-close" id="search-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CART DROPDOWN -->
+    <div class="cart-dropdown" id="cart-dropdown">
+        <div class="cart-dropdown-header">
+            <h3>Mi Carrito</h3>
+            <button class="cart-dropdown-close" id="cart-dropdown-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-dropdown-body" id="cart-dropdown-body">
+            <p class="cart-empty">Tu carrito está vacío</p>
+        </div>
+        <div class="cart-dropdown-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-amount" id="cart-total-dropdown">$0.00</span>
+            </div>
+            <a href="./carrito.html" class="btn btn-primary btn-block">Ver Carrito Completo</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper" id="hero-swiper-wrapper">
+                <!-- Se llenará dinámicamente con JS -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories" id="categorias">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Explora por Categorías</h2>
+                <p class="section-subtitle">Encuentra exactamente lo que buscas</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="electronics" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&auto=format&fit=crop" alt="Electrónica">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-laptop category-icon"></i>
+                        <h3 class="category-title">Electrónica</h3>
+                        <p class="category-description">Los mejores gadgets y tecnología</p>
+                        <button class="btn btn-outline category-btn" data-filter="electronics">Ver Categoría</button>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="jewelery" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop" alt="Joyería">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-gem category-icon"></i>
+                        <h3 class="category-title">Joyería</h3>
+                        <p class="category-description">Elegancia y estilo único</p>
+                        <button class="btn btn-outline category-btn" data-filter="jewelery">Ver Categoría</button>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="men-s-clothing" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&auto=format&fit=crop" alt="Ropa de Hombre">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-tshirt category-icon"></i>
+                        <h3 class="category-title">Ropa de Hombre</h3>
+                        <p class="category-description">Moda masculina de calidad</p>
+                        <button class="btn btn-outline category-btn" data-filter="men's clothing">Ver Categoría</button>
+                    </div>
+                </div>
+
+                <div class="category-card" data-category="women-s-clothing" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop" alt="Ropa de Mujer">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-crown category-icon"></i>
+                        <h3 class="category-title">Ropa de Mujer</h3>
+                        <p class="category-description">Tendencias y estilo femenino</p>
+                        <button class="btn btn-outline category-btn" data-filter="women's clothing">Ver Categoría</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shipping-fast service-icon"></i>
+                    <h4 class="service-title">Envío Rápido</h4>
+                    <p class="service-text">Entrega en 24-48 horas</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-shield-alt service-icon"></i>
+                    <h4 class="service-title">Compra Segura</h4>
+                    <p class="service-text">Garantía de 30 días</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-headset service-icon"></i>
+                    <h4 class="service-title">Soporte 24/7</h4>
+                    <p class="service-text">Atención personalizada</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-credit-card service-icon"></i>
+                    <h4 class="service-title">Pagos Seguros</h4>
+                    <p class="service-text">Múltiples métodos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products" id="productos">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Nuestros Productos</h2>
+                <p class="section-subtitle">Descubre las mejores ofertas</p>
+            </div>
+            
+            <div class="products-controls" data-aos="fade-up">
+                <div class="products-filters">
+                    <button class="filter-btn active" data-filter="todos">
+                        <i class="fas fa-th"></i>
+                        Todos
+                    </button>
+                    <button class="filter-btn" data-filter="electronics">
+                        <i class="fas fa-laptop"></i>
+                        Electrónica
+                    </button>
+                    <button class="filter-btn" data-filter="jewelery">
+                        <i class="fas fa-gem"></i>
+                        Joyería
+                    </button>
+                    <button class="filter-btn" data-filter="men's clothing">
+                        <i class="fas fa-tshirt"></i>
+                        Hombre
+                    </button>
+                    <button class="filter-btn" data-filter="women's clothing">
+                        <i class="fas fa-crown"></i>
+                        Mujer
+                    </button>
+                </div>
+                
+                <div class="products-sort">
+                    <select id="sort-select" class="sort-select">
+                        <option value="default">Ordenar por</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="name-asc">Nombre: A-Z</option>
+                        <option value="name-desc">Nombre: Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Se llenará dinámicamente con JS -->
+                <div class="products-loading">
+                    <div class="spinner"></div>
+                    <p>Cargando productos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">TemuLandia</h3>
+                    <p class="footer-text">Tu tienda online de confianza con los mejores productos y precios.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Categorías</h4>
+                    <ul class="footer-list">
+                        <li><a href="#productos" data-filter="electronics">Electrónica</a></li>
+                        <li><a href="#productos" data-filter="jewelery">Joyería</a></li>
+                        <li><a href="#productos" data-filter="men's clothing">Ropa de Hombre</a></li>
+                        <li><a href="#productos" data-filter="women's clothing">Ropa de Mujer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Información</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Contacto</h4>
+                    <ul class="footer-list">
+                        <li><i class="fas fa-envelope"></i> info@temulandia.com</li>
+                        <li><i class="fas fa-phone"></i> +57 300 123 4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cúcuta, Colombia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TemuLandia by Dyonix. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    
+    <!-- Product Detail Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-overlay" id="product-modal-overlay"></div>
+        <div class="modal-content modal-product">
+            <button class="modal-close" id="product-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="product-modal-body">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-overlay" id="auth-modal-overlay"></div>
+        <div class="modal-content modal-auth">
+            <button class="modal-close" id="auth-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Iniciar Sesión</button>
+                    <button class="auth-tab" data-tab="register">Registrarse</button>
+                </div>
+                
+                <!-- Login Form -->
+                <div class="auth-panel active" id="login-panel">
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Correo Electrónico</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <p class="form-error" id="login-error"></p>
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    </form>
+                </div>
+                
+                <!-- Register Form -->
+                <div class="auth-panel" id="register-panel">
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-email">Correo Electrónico</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Contraseña</label>
+                            <input type="password" id="register-password" required minlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm">Confirmar Contraseña</label>
+                            <input type="password" id="register-confirm" required>
+                        </div>
+                        <p class="form-error" id="register-error"></p>
+                        <button type="submit" class="btn btn-primary btn-block">Crear Cuenta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
