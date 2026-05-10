@@ -1,12 +1,8 @@
-// ================================
-// VARIABLES GLOBALES
-// ================================
+
 let productosEnCarrito = JSON.parse(localStorage.getItem('productos-en-carrito')) || [];
 let ordenActual = null;
 
-// ================================
-// INICIALIZACIÓN
-// ================================
+
 document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     renderCarrito();
@@ -14,10 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarTotales();
 });
 
-// ================================
-// HEADER
-// ================================
 function initHeader() {
+
     const navToggle = document.getElementById('nav-toggle');
     const navClose = document.getElementById('nav-close');
     const nav = document.getElementById('header-nav');
@@ -31,30 +25,21 @@ function initHeader() {
     });
 }
 
-// ================================
-// EVENT LISTENERS
-// ================================
+
 function initEventListeners() {
-    // Vaciar carrito
     document.getElementById('btn-vaciar')?.addEventListener('click', vaciarCarrito);
     
-    // Checkout
     document.getElementById('btn-checkout')?.addEventListener('click', abrirCheckout);
     
-    // Historial
     document.getElementById('btn-historial')?.addEventListener('click', abrirHistorial);
     
-    // Modals
     initModals();
     
-    // Checkout form
     const checkoutForm = document.getElementById('checkout-form');
     checkoutForm?.addEventListener('submit', procesarCompra);
 }
 
-// ================================
-// RENDER CARRITO
-// ================================
+
 function renderCarrito() {
     const emptyState = document.getElementById('cart-empty');
     const content = document.getElementById('cart-content');
@@ -114,9 +99,7 @@ function renderCarrito() {
     actualizarTotales();
 }
 
-// ================================
-// CARRITO - OPERACIONES
-// ================================
+
 function cambiarCantidad(id, cambio) {
     const producto = productosEnCarrito.find(p => p.id === id);
     
@@ -162,13 +145,13 @@ function guardarCarrito() {
     localStorage.setItem('productos-en-carrito', JSON.stringify(productosEnCarrito));
 }
 
-// ================================
-// TOTALES
-// ================================
+
 function actualizarTotales() {
     const subtotal = productosEnCarrito.reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
-    const envio = 0; // Gratis
-    const descuento = subtotal > 100 ? subtotal * 0.05 : 0; // 5% descuento si es mayor a $100
+    const envio = 0;
+
+    const descuento = subtotal > 100 ? subtotal * 0.05 : 0;
+
     const total = subtotal + envio - descuento;
     
     const elements = {
@@ -186,11 +169,9 @@ function actualizarTotales() {
     return { subtotal, envio, descuento, total };
 }
 
-// ================================
-// CHECKOUT
-// ================================
+
 function abrirCheckout() {
-    // Verificar usuario logueado
+
     if (!hayUsuarioLogueado()) {
         mostrarNotificacion('Debes iniciar sesión para continuar', 'warning');
         setTimeout(() => {
@@ -199,18 +180,17 @@ function abrirCheckout() {
         return;
     }
     
-    // Verificar carrito no vacío
+
     if (productosEnCarrito.length === 0) {
         mostrarNotificacion('Tu carrito está vacío', 'warning');
         return;
     }
     
-    // Prellenar email del usuario
+
     const email = obtenerNombreUsuario();
     const emailInput = document.getElementById('checkout-email');
     if (emailInput) emailInput.value = email;
     
-    // Mostrar modal
     const modal = document.getElementById('checkout-modal');
     modal?.classList.add('active');
 }
@@ -219,7 +199,6 @@ function cerrarCheckout() {
     const modal = document.getElementById('checkout-modal');
     modal?.classList.remove('active');
     
-    // Limpiar errores
     const error = document.getElementById('checkout-error');
     if (error) error.textContent = '';
 }
@@ -227,7 +206,6 @@ function cerrarCheckout() {
 function procesarCompra(e) {
     e.preventDefault();
     
-    // Obtener datos del formulario
     const formData = {
         nombre: document.getElementById('checkout-name').value.trim(),
         email: document.getElementById('checkout-email').value.trim(),
@@ -240,8 +218,7 @@ function procesarCompra(e) {
         notas: document.getElementById('checkout-notes').value.trim()
     };
     
-    // Validar
-    if (!formData.nombre || !formData.telefono || !formData.ciudad || 
+    if (!formData.nombre || !formData.telefono || !formData.ciudad ||
         !formData.direccion || !formData.departamento || !formData.codigoPostal || 
         !formData.metodoPago) {
         const error = document.getElementById('checkout-error');
@@ -249,10 +226,8 @@ function procesarCompra(e) {
         return;
     }
     
-    // Obtener totales
     const totales = actualizarTotales();
     
-    // Crear orden
     const orden = {
         id: `ORDER-${Date.now()}`,
         fecha: new Date().toISOString(),
@@ -262,20 +237,15 @@ function procesarCompra(e) {
         estado: 'completado'
     };
     
-    // Guardar en historial
     guardarOrden(orden);
     
-    // Limpiar carrito
     productosEnCarrito = [];
     guardarCarrito();
     
-    // Cerrar checkout
     cerrarCheckout();
     
-    // Mostrar éxito
     mostrarExito(orden);
     
-    // Limpiar formulario
     document.getElementById('checkout-form').reset();
 }
 
@@ -294,10 +264,8 @@ function mostrarExito(orden) {
     
     modal?.classList.add('active');
     
-    // Actualizar vista
     renderCarrito();
     
-    // Auto-cerrar después de 5 segundos
     setTimeout(() => {
         modal?.classList.remove('active');
     }, 5000);
@@ -312,12 +280,11 @@ function formatearMetodoPago(metodo) {
     return metodos[metodo] || metodo;
 }
 
-// ================================
-// HISTORIAL
-// ================================
+
 function guardarOrden(orden) {
     let historial = JSON.parse(localStorage.getItem('historial-compras')) || [];
-    historial.unshift(orden); // Agregar al inicio
+    historial.unshift(orden);
+
     localStorage.setItem('historial-compras', JSON.stringify(historial));
 }
 
@@ -384,10 +351,8 @@ function abrirHistorial() {
 }
 
 function verHistorial() {
-    // Cerrar modal de éxito
     document.getElementById('success-modal')?.classList.remove('active');
     
-    // Abrir historial
     abrirHistorial();
 }
 
@@ -397,10 +362,8 @@ function verDetalleOrden(index) {
     
     if (!orden) return;
     
-    // Cerrar historial
     document.getElementById('history-modal')?.classList.remove('active');
     
-    // Mostrar detalle
     const modal = document.getElementById('order-detail-modal');
     const content = document.getElementById('order-detail-content');
     
@@ -468,36 +431,29 @@ function volverHistorial() {
     abrirHistorial();
 }
 
-// ================================
-// MODALS
-// ================================
+
 function initModals() {
-    // Checkout Modal
     const checkoutClose = document.getElementById('checkout-close');
     checkoutClose?.addEventListener('click', cerrarCheckout);
     
-    // History Modal
     const historyClose = document.getElementById('history-close');
     const historyModal = document.getElementById('history-modal');
     historyClose?.addEventListener('click', () => {
         historyModal?.classList.remove('active');
     });
     
-    // Order Detail Modal
     const orderClose = document.getElementById('order-detail-close');
     const orderModal = document.getElementById('order-detail-modal');
     orderClose?.addEventListener('click', () => {
         orderModal?.classList.remove('active');
     });
     
-    // Cerrar con overlay
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', (e) => {
             e.target.closest('.modal')?.classList.remove('active');
         });
     });
     
-    // Cerrar con ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             document.querySelectorAll('.modal.active').forEach(modal => {
@@ -507,9 +463,7 @@ function initModals() {
     });
 }
 
-// ================================
-// NOTIFICACIONES
-// ================================
+
 function mostrarNotificacion(mensaje, tipo = 'info') {
     let container = document.querySelector('.notifications-container');
     
@@ -574,7 +528,6 @@ function mostrarNotificacion(mensaje, tipo = 'info') {
     }, 3000);
 }
 
-// Agregar estilos de animación
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {
@@ -601,9 +554,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ================================
-// FUNCIONES GLOBALES
-// ================================
+
 window.cambiarCantidad = cambiarCantidad;
 window.eliminarProducto = eliminarProducto;
 window.cerrarCheckout = cerrarCheckout;
