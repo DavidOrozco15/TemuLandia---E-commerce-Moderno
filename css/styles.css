@@ -1,8 +1,5 @@
-/* ================================
-   VARIABLES & RESET
-================================ */
+
 :root {
-    /* Colors */
     --primary: #6366f1;
     --primary-dark: #4f46e5;
     --primary-light: #818cf8;
@@ -23,19 +20,19 @@
     --warning: #f59e0b;
     --danger: #ef4444;
     
-    /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
     --gradient-dark: linear-gradient(135deg, var(--dark) 0%, var(--dark-800) 100%);
     
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     
-    /* Spacing */
     --container-width: 1280px;
+
     --border-radius: 12px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -112,7 +109,6 @@ ul {
     font-weight: 400;
 }
 
-/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -153,7 +149,6 @@ ul {
     width: 100%;
 }
 
-/* Loading Spinner */
 .spinner {
     width: 48px;
     height: 48px;
